@@ -15,8 +15,6 @@ coverage
 *.log
 .DS_Store
 
-.npmrc
-
 *.tgz
 
 .venv

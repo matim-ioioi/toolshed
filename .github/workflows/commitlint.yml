@@ -1,0 +1,38 @@
+name: Commitlint
+
+on:
+  pull_request:
+
+# Джоб выполняет код из ветки pull request'а (установка зависимостей), поэтому
+# даём ему только чтение и не полагаемся на секреты: для pull request из форков
+# GitHub и так выдаёт read-only токен и не передаёт секреты репозитория.
+permissions:
+  contents: read
+
+jobs:
+  commitlint:
+    runs-on: ubuntu-latest
+    # Тег зафиксирован на конкретном патче node (а не на плавающем node:22-alpine):
+    # некоторые сборки corepack уходили в npm-registry за "latest stable" pnpm ещё
+    # до чтения packageManager и падали на проверке подписи. Образ 22.23.1 несёт
+    # исправленный corepack.
+    container: node:22.23.1-alpine
+    steps:
+      # git ставим до checkout: без него actions/checkout не может сделать полный
+      # клон (fetch-depth: 0) и уходит в REST-фолбэк без истории коммитов.
+      - name: Install git
+        run: apk add --no-cache git
+      - uses: actions/checkout@v7
+        with:
+          # Полная история нужна, чтобы commitlint видел все коммиты диапазона PR.
+          fetch-depth: 0
+      # corepack prepare pnpm@X --activate намеренно не используется: он кеширует
+      # версию без учёта хэша, и любой следующий pnpm@9.15.4+sha512.* (в т.ч.
+      # подделанный) отдавался бы из кеша без проверки. Версию и её sha512 берём
+      # только из packageManager в package.json — так проверка целостности работает.
+      - name: Enable pnpm via corepack
+        run: corepack enable
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile --ignore-scripts
+      - name: Lint commit messages
+        run: pnpm exec commitlint --from "${{ github.event.pull_request.base.sha }}" --to "${{ github.event.pull_request.head.sha }}" --verbose

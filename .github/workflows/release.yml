@@ -1,0 +1,52 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+
+# Релиз полностью описан semantic-release (.releaserc.json: commit-analyzer ->
+# release-notes-generator -> changelog -> npm (npmPublish: false) -> git -> github).
+# Ему нужны права на запись в содержимое (пуш тега и релизного коммита) и в
+# issues/pull requests (плагин @semantic-release/github).
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+# Не запускаем параллельные релизы на одной ветке.
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    # Цикл самозапуска разомкнут тремя механизмами: [skip ci] в сообщении релизного
+    # коммита (@semantic-release/git) заставляет GitHub Actions пропустить запуск;
+    # условие ниже дополнительно исключает коммиты с заголовком chore(release): …;
+    # и наконец пуш выполнен встроенным GITHUB_TOKEN, события от которого сами по
+    # себе не порождают новые запуски workflow.
+    if: ${{ !startsWith(github.event.head_commit.message, 'chore(release):') }}
+    # Тег зафиксирован патчем, а не плавающим node:22-alpine — см. комментарий в
+    # commitlint.yml (баг с corepack).
+    container: node:22.23.1-alpine
+    steps:
+      - name: Install git
+        run: apk add --no-cache git
+      - uses: actions/checkout@v7
+        with:
+          # Полная история и теги нужны semantic-release, чтобы определить
+          # предыдущий релиз и вычислить следующую версию.
+          fetch-depth: 0
+          # semantic-release сам аутентифицирует git-пуш через GITHUB_TOKEN;
+          # оставленные checkout'ом креды этому только мешают.
+          persist-credentials: false
+      # Без corepack prepare — см. комментарий в commitlint.yml: он глушит проверку sha512.
+      - name: Enable pnpm via corepack
+        run: corepack enable
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile --ignore-scripts
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: pnpm release

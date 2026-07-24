@@ -1,0 +1,19 @@
+pnpm exec commitlint --edit "$1" || {
+  echo ""
+  echo "=================================================================="
+  echo "  ✖  Неверный формат сообщения коммита (Conventional Commits)"
+  echo ""
+  echo "  Формат:  <тип>(<область>): <описание>"
+  echo ""
+  echo "  Примеры:"
+  echo "    feat(auth): добавить вход по JWT"
+  echo "    fix(ui): выровнять кнопку отправки"
+  echo "    docs: обновить README"
+  echo "    chore(deps): обновить prisma до 7.8"
+  echo ""
+  echo "  Типы: feat, fix, docs, style, refactor, perf,"
+  echo "        test, build, ci, chore, revert"
+  echo "=================================================================="
+  echo ""
+  exit 1
+}
