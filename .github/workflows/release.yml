@@ -27,12 +27,7 @@ jobs:
     # и наконец пуш выполнен встроенным GITHUB_TOKEN, события от которого сами по
     # себе не порождают новые запуски workflow.
     if: ${{ !startsWith(github.event.head_commit.message, 'chore(release):') }}
-    # Тег зафиксирован патчем, а не плавающим node:22-alpine — см. комментарий в
-    # commitlint.yml (баг с corepack).
-    container: node:22.23.1-alpine
     steps:
-      - name: Install git
-        run: apk add --no-cache git
       - uses: actions/checkout@v7
         with:
           # Полная история и теги нужны semantic-release, чтобы определить
@@ -41,6 +36,11 @@ jobs:
           # semantic-release сам аутентифицирует git-пуш через GITHUB_TOKEN;
           # оставленные checkout'ом креды этому только мешают.
           persist-credentials: false
+      # Версия node зафиксирована патчем, а не плавающим 22.x — см. комментарий в
+      # commitlint.yml (баг с corepack).
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22.23.1
       # Без corepack prepare — см. комментарий в commitlint.yml: он глушит проверку sha512.
       - name: Enable pnpm via corepack
         run: corepack enable

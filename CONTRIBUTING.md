@@ -86,7 +86,7 @@ Workflow `Commitlint` запускается на событие `pull_request` 
 
 ### Node в CI
 
-Оба workflow работают в контейнере `node:22.23.1-alpine`. Версия node зафиксирована конкретным патчем, а не плавающим тегом `22-alpine`: некоторые сборки corepack уходили в npm-registry за «latest stable» pnpm ещё до чтения `packageManager` в `package.json` и падали на проверке подписи. Зафиксированный образ несёт исправленный corepack.
+Оба workflow работают на `ubuntu-latest`; node ставится через `actions/setup-node` с версией, зафиксированной конкретным патчем (`node-version: 22.23.1`), а не плавающим `22.x`: некоторые сборки corepack уходили в npm-registry за «latest stable» pnpm ещё до чтения `packageManager` в `package.json` и падали на проверке подписи. Зафиксированная версия node несёт исправленный corepack.
 
 pnpm поднимается через `corepack enable` — не через `corepack prepare … --activate`: активация кеширует версию без учёта sha512, и тогда любой следующий `pnpm@9.15.4+sha512.*` (в том числе подделанный) отдавался бы из кеша без проверки целостности. Версию pnpm и её sha512 берём только из поля `packageManager` в `package.json` — так проверка целостности реально работает.
 
