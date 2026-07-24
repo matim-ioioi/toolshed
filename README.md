@@ -1,5 +1,11 @@
 # 🧰 toolshed
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+![Python](https://img.shields.io/badge/Python-3.8%2B-3776AB.svg?logo=python&logoColor=white)
+![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Linux-lightgrey.svg)
+![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
+![Maintained](https://img.shields.io/badge/maintained-yes-brightgreen.svg)
+
 **Сарай с инструментами.** Монорепозиторий с разношёрстными утилитами и приложениями — от маленьких CLI-скриптов до полноценных приложений под конкретные задачи. Каждый инструмент самодостаточен: живёт в своей папке, имеет свою инструкцию по запуску и не тянет за собой остальные.
 
 Здесь нет единой темы. Есть общий принцип: если что-то оказалось полезным и переиспользуемым — оно едет сюда, в свой отсек, а не теряется по десятку разрозненных репозиториев.
