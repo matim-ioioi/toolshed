@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-ru_pii_sanitizer.py — обезличивание русскоязычных текстов.
+Обезличивание русскоязычных текстов.
 
 Схема:
   1. REGEX-слой (чистый Python, детерминированно): документные ПД —
@@ -28,7 +28,7 @@ ru_pii_sanitizer.py — обезличивание русскоязычных т
   2. Установить зависимости
     pip install requests
   3. Запустить
-    python ru_pii_sanitizer.py <входной_файл> [выходной_файл] # без output_file печатает результат в stdout
+    python privacy-anonymizer-ru.py <входной_файл> [выходной_файл] # без output_file печатает результат в stdout
 """
 
 from __future__ import annotations
@@ -540,7 +540,7 @@ def sanitize_file_cached(in_path: str, cache_dir: str = ".pii_cache") -> str:
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("usage: python ru_pii_sanitizer.py <input> [output]", file=sys.stderr)
+        print("usage: python privacy-anonymizer-ru.py <input> [output]", file=sys.stderr)
         sys.exit(2)
 
     # Предполётные проверки LLM-слоя — в начале, чтобы предупреждения были видны сразу
