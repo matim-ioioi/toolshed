@@ -16,7 +16,7 @@ OS="$(uname -s 2>/dev/null)"
 #region уведомление на macOS
 notify_macos() {
   if command -v osascript >/dev/null 2>&1; then
-    osascript -e 'display notification "Toolshed | Claude Code ждёт действия" with title "Claude Code" sound name "Glass"' \
+    osascript -e 'display notification "Claude Code ждёт действия" with title "Toolshed | Claude Code" sound name "Glass"' \
       >/dev/null 2>&1 || true
   fi
 }

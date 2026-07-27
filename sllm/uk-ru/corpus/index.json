@@ -1,0 +1,84 @@
+{
+  "acts": [
+    {
+      "slug": "zhk-rf",
+      "title": "Жилищный кодекс Российской Федерации",
+      "source": "ips",
+      "url": "http://pravo.gov.ru/proxy/ips/?docview&page=all&print=1&nd=102090645&rdk=171",
+      "note": "редакция rdk=171",
+      "chars": 765068,
+      "sha256": "6c69f4c05b8b25d3",
+      "fetched": "2026-07-27"
+    },
+    {
+      "slug": "pp-491",
+      "title": "Постановление Правительства РФ от 13.08.2006 № 491 (Правила содержания общего имущества в многоквартирном доме)",
+      "source": "ips",
+      "url": "http://pravo.gov.ru/proxy/ips/?docview&page=all&print=1&nd=102108472&rdk=20",
+      "note": "редакция rdk=20",
+      "chars": 83763,
+      "sha256": "34c326bcb33c0809",
+      "fetched": "2026-07-27"
+    },
+    {
+      "slug": "pp-290",
+      "title": "Постановление Правительства РФ от 03.04.2013 № 290 (Минимальный перечень услуг и работ по содержанию общего имущества)",
+      "source": "ips",
+      "url": "http://pravo.gov.ru/proxy/ips/?docview&page=all&print=1&nd=102164374&rdk=8",
+      "note": "редакция rdk=8",
+      "chars": 39933,
+      "sha256": "7d98b9ed5576340c",
+      "fetched": "2026-07-27"
+    },
+    {
+      "slug": "pp-354",
+      "title": "Постановление Правительства РФ от 06.05.2011 № 354 (Правила предоставления коммунальных услуг)",
+      "source": "ips",
+      "url": "http://pravo.gov.ru/proxy/ips/?docview&page=all&print=1&nd=102147807&rdk=58",
+      "note": "редакция rdk=58",
+      "chars": 633816,
+      "sha256": "e17578a9ebbd5aff",
+      "fetched": "2026-07-27"
+    },
+    {
+      "slug": "pp-416",
+      "title": "Постановление Правительства РФ от 15.05.2013 № 416 (Правила осуществления деятельности по управлению МКД)",
+      "source": "ips",
+      "url": "http://pravo.gov.ru/proxy/ips/?docview&page=all&print=1&nd=102165338&rdk=6",
+      "note": "редакция rdk=6",
+      "chars": 55516,
+      "sha256": "f136b5337554d29d",
+      "fetched": "2026-07-27"
+    },
+    {
+      "slug": "gosstroy-170",
+      "title": "Постановление Госстроя РФ от 27.09.2003 № 170 (Правила и нормы технической эксплуатации жилищного фонда)",
+      "source": "mirror",
+      "url": "https://sudact.ru/law/postanovlenie-gosstroia-rf-ot-27092003-n-170/",
+      "note": "оглавление + 107 разделов",
+      "chars": 369616,
+      "sha256": "044e4adffe40018f",
+      "fetched": "2026-07-27"
+    },
+    {
+      "slug": "fz-59",
+      "title": "Федеральный закон от 02.05.2006 № 59-ФЗ (О порядке рассмотрения обращений граждан РФ)",
+      "source": "ips",
+      "url": "http://pravo.gov.ru/proxy/ips/?docview&page=all&print=1&nd=102106413&rdk=10",
+      "note": "редакция rdk=10",
+      "chars": 28311,
+      "sha256": "3a04ef9bc72aaed6",
+      "fetched": "2026-07-27"
+    },
+    {
+      "slug": "koap-7-22",
+      "title": "КоАП РФ, статьи 7.22–7.23 (нарушение правил содержания и ремонта жилых домов, нормативов обеспечения коммунальными услугами)",
+      "source": "ips",
+      "url": "http://pravo.gov.ru/proxy/ips/?docview&page=all&print=1&nd=102074277&rdk=962",
+      "note": "редакция rdk=962",
+      "chars": 5610,
+      "sha256": "ca13d5e9ec3063af",
+      "fetched": "2026-07-27"
+    }
+  ]
+}

@@ -21,3 +21,5 @@ coverage
 __pycache__/
 *.py[cod]
 .pii_cache/
+# генерируется sllm/uk-ru/runtime.py при запуске SearXNG
+searxng-settings.yml
