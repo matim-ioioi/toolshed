@@ -56,7 +56,7 @@
 
 Утилиты общего назначения: то, что не относится ни к одной конкретной области.
 
-### `privacy_anonymizer_ru.py`
+### `privacy-anonymizer-ru.py`
 
 Обезличивание русскоязычных документов — маскирование персональных данных (ориентировано на РФ-сегмент). Работает в два независимых слоя, каждый включается отдельным флагом:
 
@@ -72,9 +72,9 @@ python -m venv .venv && source .venv/bin/activate
 pip install requests
 
 # в файл
-python utils/privacy_anonymizer_ru.py входной.txt выходной.txt
+python utils/privacy-anonymizer-ru.py входной.txt выходной.txt
 # или в stdout, если второй аргумент не задан
-python utils/privacy_anonymizer_ru.py входной.txt
+python utils/privacy-anonymizer-ru.py входной.txt
 ```
 
 Слои, категории LLM, модель и поведение со ссылками настраиваются в блоке `КОНФИГ` в начале файла.
